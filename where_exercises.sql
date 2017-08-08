@@ -27,7 +27,7 @@ AND gender = "M";
 SELECT *
 FROM employees
 WHERE last_name like "%e"
-	OR last_name like "e%";
+	AND last_name like "e%";
 
 
 
