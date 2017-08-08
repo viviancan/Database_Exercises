@@ -29,6 +29,10 @@ FROM employees
 WHERE last_name like "%e"
 	AND last_name like "e%";
 
+SELECT *
+FROM employees
+WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31' 
+AND birth_date like '%-12-25';
 
 
 
