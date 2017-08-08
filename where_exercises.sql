@@ -24,6 +24,11 @@ FROM employees
 WHERE first_name IN ("Irena" , "Vidya" , "Maya") 
 AND gender = "M";
 
+SELECT *
+FROM employees
+WHERE last_name like "%e"
+	OR last_name like "e%";
+
 
 
 
