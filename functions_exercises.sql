@@ -52,10 +52,14 @@ ORDER BY birth_date ASC, hire_date DESC;
 
 SELECT CURDATE();
 
-SELECT *
+
+/* Add a GROUP BY clause to your query for last names with 'q' and not 'qu' to find the distinct combination of first and last names. You will find there were some duplicate first and last name pairs in your previous results. Add a count() to your results and use ORDER BY to make it easier to find employees whose unusual name is shared with others. */
+SELECT first_name, last_name, count(*)
 FROM employees
 WHERE last_name like '%q%' 
-	AND last_name NOT LIKE '%qu%';
+	AND last_name NOT LIKE '%qu%'
+GROUP BY first_name, last_name
+ORDER BY count(*) DESC;
 
 
 
