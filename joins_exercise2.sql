@@ -18,3 +18,15 @@ WHERE dm.to_date like '9999-%'
 AND e.gender = 'F';
 
 
+-- Find the current titles of employees currently working in the Customer Service department.
+SELECT  t.title AS 'Title', count(t.title) AS 'Count'
+FROM employees AS e
+JOIN dept_emp AS de
+	ON de.emp_no = e.emp_no
+JOIN titles AS t
+	 on t.emp_no = de.emp_no
+WHERE t.to_date like '9999-%'
+	AND de.to_date like '9999-%'
+	AND de.dept_no = 'D009'
+GROUP BY t.title
+
