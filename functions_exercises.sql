@@ -1,4 +1,4 @@
-/* Modify your first query to order by first name. The first result should be Irena Majewski and the last result should be Vidya Schaft */
+-- Update your query for 'Irena', 'Vidya', or 'Maya'. Use count(*) and GROUP BY to find the number of employees for each gender with those names. Your results should be: 
 
 SELECT count(gender), gender
 FROM employees
@@ -32,11 +32,12 @@ FROM employees
 WHERE first_name IN ("Irena" , "Vidya" , "Maya") 
 AND gender = "M";
 
-SELECT *
+-- Functinos: Update your queries for employees whose names start and end with 'E'. Use concat() to combine their first and last name together as a single column in your results.
+
+SELECT CONCAT(first_name, " ", last_name) as "Employee First & Last name"
 FROM employees
--- like '%E%'
-WHERE last_name like "%e"
-	AND last_name like "e%";
+WHERE last_name like "%e%";
+
 	
 
 /* Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini. */
