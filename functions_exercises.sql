@@ -41,11 +41,16 @@ WHERE last_name like "%e%";
 	
 
 /* Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini. */
-SELECT *
+
+-- Function: For your query of employees born on Christmas and hired in the 90s, use datediff() to find how many days they have been working at the company (Hint: You will also need to use now() or curdate())
+
+SELECT CONCAT(first_name, " ", last_name), DATEDIFF(CURDATE(), hire_date) AS "Days worked at company"
 FROM employees
 WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31' 
 AND birth_date like '%-12-25'
 ORDER BY birth_date ASC, hire_date DESC;
+
+SELECT CURDATE();
 
 SELECT *
 FROM employees
