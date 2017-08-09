@@ -50,7 +50,7 @@ WHERE dm.to_date like '9999%'
 
 /*  Find the names of all current employees, their department name, and their current manager's name. */
 
-SELECT CONCAT(e.first_name , ' ', e.last_name) AS 'Employee Name', d.dept_name AS 'Department Name' , dman.emp_no, CONCAT(em.first_name, ' ', em.last_name) AS 'Manager Name'
+SELECT CONCAT(e.first_name , ' ', e.last_name) AS 'Employee Name', d.dept_name AS 'Department Name' , CONCAT(em.first_name, ' ', em.last_name) AS 'Manager Name'
 FROM employees AS e
 JOIN dept_emp AS de
 	ON de.emp_no = e.emp_no
