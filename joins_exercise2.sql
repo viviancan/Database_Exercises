@@ -63,6 +63,71 @@ JOIN employees as em
 	ON dman.emp_no = em.emp_no
 	
 WHERE de.to_date like '9999%'
-	AND dman.to_date like '9999%'
+	AND dman.to_date like '9999%';
+	
+/* BONUS Write a query to get the average salary current managers make by gender 
+M 79350.60
+F 75690.00 */
+
+SELECT  e.gender, avg(s.salary) AS 'AVG SALARY'
+FROM departments as d
+
+JOIN dept_manager as dm
+	ON dm.dept_no = d.dept_no
+
+JOIN employees as e
+	ON e.emp_no = dm.emp_no
+	
+JOIN salaries as s
+	ON s.emp_no = e.emp_no
+
+WHERE dm.to_date > now()
+	AND s.to_date >now()
+	
+GROUP BY e.gender;
+
+
+/* Write a query to get the avg salary managers historically make by gender
+M 72810.94
+F 62037.21 */
+SELECT  e.gender, avg(s.salary) AS 'AVG SALARY - HISTORICALLY'
+FROM departments as d
+
+JOIN dept_manager as dm
+	ON dm.dept_no = d.dept_no
+
+JOIN employees as e
+	ON e.emp_no = dm.emp_no
+	
+JOIN salaries as s
+	ON s.emp_no = e.emp_no
+	
+GROUP BY e.gender;
+
+/* get avg salary for all current empoyees by gender
+M 72044.66
+F 71963.57 */
+
+SELECT  e.gender, avg(s.salary) AS 'Avg salary for current employees'
+FROM employees as e
+JOIN dept_emp as de
+	ON de.emp_no = e.emp_no
+JOIN salaries as s
+	ON s.emp_no = de.emp_no
+WHERE de.to_date > now()
+	AND s.to_date > now()
+GROUP BY e.gender;
+
+/* get avg historic salary for all employees by gender
+M 63842.25
+F 63750.17 */
+
+SELECT  e.gender, avg(s.salary) AS 'Avg salary for ALL employees'
+FROM employees as e
+JOIN dept_emp as de
+	ON de.emp_no = e.emp_no
+JOIN salaries as s
+	ON s.emp_no = de.emp_no
+GROUP BY e.gender
 
 
